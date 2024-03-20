@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		141F12201C1C9ABE0026D415 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5115241B1FFBA900514240 /* Result.framework */; };
+		10A008CA2BAA8FF0005093C2 /* Result.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A008C92BAA8FF0005093C2 /* Result.xcframework */; };
+		10A008CB2BAA8FF0005093C2 /* Result.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 10A008C92BAA8FF0005093C2 /* Result.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		141F12311C1C9AC70026D415 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5115241B1FFBA900514240 /* Result.framework */; };
 		141F12361C1C9AC70026D415 /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CD5115241B1FFBA900514240 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7F698E501D9D680C00F1561D /* FormURLEncodedBodyParametersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F698E3C1D9D680C00F1561D /* FormURLEncodedBodyParametersTests.swift */; };
@@ -66,6 +67,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		10A008CC2BAA8FF0005093C2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				10A008CB2BAA8FF0005093C2 /* Result.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		141F12351C1C9AC70026D415 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,6 +92,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		10A008C92BAA8FF0005093C2 /* Result.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Result.xcframework; path = Carthage/Build/Result.xcframework; sourceTree = "<group>"; };
 		141F120F1C1C96820026D415 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Base.xcconfig; path = Configurations/Base.xcconfig; sourceTree = "<group>"; };
 		141F12101C1C96820026D415 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Configurations/Debug.xcconfig; sourceTree = "<group>"; };
 		141F12111C1C96820026D415 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Configurations/Release.xcconfig; sourceTree = "<group>"; };
@@ -141,7 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				141F12201C1C9ABE0026D415 /* Result.framework in Frameworks */,
+				10A008CA2BAA8FF0005093C2 /* Result.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +169,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10A008C82BAA8FF0005093C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10A008C92BAA8FF0005093C2 /* Result.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		141F120E1C1C96690026D415 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +227,7 @@
 				7F09BF751C8AE64200F4A59A /* Tests */,
 				141F120E1C1C96690026D415 /* Configurations */,
 				7F45FCDE1A94D02C006863BB /* Products */,
+				10A008C82BAA8FF0005093C2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -366,6 +388,7 @@
 				141F121F1C1C9ABE0026D415 /* Frameworks */,
 				141F12211C1C9ABE0026D415 /* Headers */,
 				141F12221C1C9ABE0026D415 /* Resources */,
+				10A008CC2BAA8FF0005093C2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -525,7 +548,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -538,9 +565,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
@@ -557,7 +589,8 @@
 			baseConfigurationReference = 141F12401C1C9EA30026D415 /* Tests.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Tests/APIKitTests/Info.plist;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
